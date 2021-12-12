@@ -1,27 +1,29 @@
 // Assignment code here
-var questions = {
-    isLowercase: false,
-    isUppercase: false,
-    isNumber: false,
-    isSpecialCharacter: false,
-    passwordLength: 0,
-    collectionOfValids: [],
-    upperCaseChar: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
-    lowerCaseChar: "abcdefghiklmnopqrsttuvwxtz".split(""),
-    numberChar: "0123456789".split(""),
-    specialChar: "*&^%$#@!?><{}".split(""),
-    askQuestion: function() {
-        this.isLowercase = window.confirm("Do you want lowercase ?");
-        this.isUppercase = window.confirm("Do you want uppercase ?");
-        this.isNumber = window.confirm("Do you want number ?");
-        this.isSpecialCharacter = window.confirm("Do you want special character ?");
-        this.passwordLength = window.prompt("How many charector do you wnat ?");
-    },
-};
+
 
 // function to get all the collection from user entry
 
 function collections() {
+    var questions = {
+        isLowercase: false,
+        isUppercase: false,
+        isNumber: false,
+        isSpecialCharacter: false,
+        passwordLength: 0,
+        collectionOfValids: [],
+        upperCaseChar: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+        lowerCaseChar: "abcdefghiklmnopqrsttuvwxtz".split(""),
+        numberChar: "0123456789".split(""),
+        specialChar: "*&^%$#@!?><{}".split(""),
+        askQuestion: function() {
+            this.isLowercase = window.confirm("Do you want lowercase ?");
+            this.isUppercase = window.confirm("Do you want uppercase ?");
+            this.isNumber = window.confirm("Do you want number ?");
+            this.isSpecialCharacter = window.confirm("Do you want special character ?");
+            this.passwordLength = window.prompt("How many charector do you wnat ?");
+        },
+    };
+    // if statments
     questions.askQuestion();
     if (questions.isLowercase === true) {
         for (i = 0; i < questions.lowerCaseChar.length; i++) {
@@ -53,8 +55,7 @@ function collections() {
     return randomPassword;
 };
 
-window.alert(collections());
-console.log(questions.collectionOfValids);
+
 
 
 
@@ -65,7 +66,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-    var password = generatePassword();
+    var password = collections();
     var passwordText = document.querySelector("#password");
 
     passwordText.value = password;
