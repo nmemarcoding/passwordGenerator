@@ -2,8 +2,8 @@
 
 
 // function to get all the collection from user entry
+function userData() {
 
-function collections() {
     var questions = {
         isLowercase: false,
         isUppercase: false,
@@ -20,27 +20,44 @@ function collections() {
             this.isUppercase = window.confirm("Do you want uppercase ?");
             this.isNumber = window.confirm("Do you want number ?");
             this.isSpecialCharacter = window.confirm("Do you want special character ?");
-            this.passwordLength = window.prompt("How many charector do you wnat ?");
+            if (!this.isLowercase && !this.isUppercase && !this.isNumber && !this.isSpecialCharacter) {
+                window.alert("You need to choose one of the prompt at leaset. ")
+                this.askQuestion();
+            }
+            this.passwordLength = window.prompt("How many charector do you wnat(at least 8 characters and no more than 128 characters) ?");
+            while (true) {
+
+                if ((this.passwordLength < 8 || this.passwordLength > 128)) {
+                    this.passwordLength = window.prompt("How many charector do you wnat(at least 8 characters and no more than 128 characters) ?");
+                } else {
+                    break;
+                }
+            }
         },
     };
-    // if statments
     questions.askQuestion();
-    if (questions.isLowercase === true) {
+    return questions;
+}
+//function to creat password
+function generatePassword(userData) {
+    // if statments
+    questions = userData;
+    if (questions.isLowercase) {
         for (i = 0; i < questions.lowerCaseChar.length; i++) {
             questions.collectionOfValids.push(questions.lowerCaseChar[i]);
         }
     }
-    if (questions.isUppercase === true) {
+    if (questions.isUppercase) {
         for (var i = 0; i < questions.upperCaseChar.length; i++) {
             questions.collectionOfValids.push(questions.upperCaseChar[i]);
         }
     }
-    if (questions.isNumber === true) {
+    if (questions.isNumber) {
         for (var i = 0; i < questions.numberChar.length; i++) {
             questions.collectionOfValids.push(questions.numberChar[i]);
         }
     }
-    if (questions.isSpecialCharacter === true) {
+    if (questions.isSpecialCharacter) {
         for (var i = 0; i < questions.specialChar.length; i++) {
             questions.collectionOfValids.push(questions.specialChar[i]);
         }
@@ -66,7 +83,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-    var password = collections();
+    var password = generatePassword(userData());
     var passwordText = document.querySelector("#password");
 
     passwordText.value = password;
