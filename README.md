@@ -22,3 +22,8 @@
 * THEN a password is generated that matches the selected criteria
 * WHEN the password is generated
 * THEN the password is either displayed in an alert or written to the page
+## Mock-Up
+* The following image shows the web application's appearance and functionality:
+<img width="667" alt="Screen Shot 2021-12-16 at 8 09 33 AM" src="https://user-images.githubusercontent.com/94582549/146407254-00e03239-861e-42a1-9b6b-32c04a506085.png">
+
+To vist this password generator, go to:
